@@ -19,7 +19,7 @@
         }
 
         * {
-            margin-block: 10px;
+            margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
@@ -54,7 +54,6 @@
 
         .container {
             max-width: 1000px;
-            margin-block: 10px;
             padding: 1.5rem;
         }
 
@@ -65,7 +64,7 @@
             border: 1px solid var(--border);
             border-radius: 1rem;
             padding: 1.5rem;
-            margin-bottom: 1.5rem;
+            margin-block: 1.5rem;
             box-shadow: var(--shadow);
             position: relative;
         }
@@ -91,6 +90,7 @@
 
         .btn.round {
             width: 48px;
+            margin-block: 1rem;
             padding: 0.5rem;
         }
 
@@ -167,6 +167,7 @@
             display: grid;
             grid-gap: 1.5rem;
             gap: 1.5rem;
+            margin-block: 10px;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
         }
 
@@ -177,7 +178,6 @@
 
         .flex-gap > * {
             margin-block: 2rem;
-            margin-y: 1rem;
         }
 
         .text-sm {
