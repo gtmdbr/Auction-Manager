@@ -227,6 +227,19 @@
             grid-gap: 1.5rem;
             gap: 2rem;
         }
+        footer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            z-index: 10;
+        }
 
         @media (max-width: 768px) {
             .grid-container {
@@ -291,8 +304,10 @@
                 <button id="exportData" class="btn btn-primary"><i class="fas fa-download"></i> Export Data</button>
             </div>
         </div>
-        <div class="text-sm font-semibold color-red-100 py-1.5">Do not refresh this page in any circumstances.</div>
-        <div class="text-base color-yellow-500 py-4">Developed by GTMDBR</div>
+     <footer>
+        <h2 class="text-sm font-semibold color-red-100 py-1.5">Do not refresh this page in any circumstances.</div>
+        <h2 class="text-base color-yellow-500 py-4">Developed by GTMDBR</div>
+     </footer>   
     </div>
 
     <div id="settingsModal" class="modal">
