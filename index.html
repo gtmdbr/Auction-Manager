@@ -285,6 +285,7 @@ animation: c4 6s infinite linear;
 
         .flex-gap {
             display: flex;
+            align-items: center;
             flex-wrap: wrap;
         }
 
@@ -334,6 +335,7 @@ animation: c4 6s infinite linear;
 
         .grid-container {
             display: grid;
+            align-items: center;
             grid-template-columns: 1fr 1fr 1fr;
             grid-gap: 1.5rem;
             gap: 2rem;
@@ -425,7 +427,7 @@ animation: c4 6s infinite linear;
                     <div id="cycleVisualization" class="cycle-vis"></div>
                 </div>
             
-                <div class="flex-gap grid-container">
+                <div class="flex-gap">
                     <button id="placeBid" class="btn btn-primary">Bid</button>
                     <button id="skipBid" class="btn btn-accent">Skip</button>
                     <button id="outBid" class="btn btn-accent1">Out</button>
@@ -451,7 +453,7 @@ animation: c4 6s infinite linear;
         </div>
 
         <div class="card">
-            <div class="flex-gap grid-container" >
+            <div class="flex-gap" >
                 <button id="exportTeam" class="btn btn-primary"><i class="fas fa-download"></i> Export Team</button>
                 <button id="exportData" class="btn btn-primary"><i class="fas fa-download"></i> Export Data</button>
             </div>
