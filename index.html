@@ -74,17 +74,18 @@
         }
         
         .mnu {
-            position: absolute;
-            top: 1rem;
-            right: 2rem;
-            z-index: 20;
-            width: 42px;
-            height: 42px;
-            border-radius: 1rem;
-            cursor: pointer;
-            border: 1px solid var(--border);
+            position: fixed;
+            top: 3rem; 
+            right: 1rem;
+            z-index: 30;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 1rem;
+            display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: var(--shadow);
         }
 
         .mnu-neutral { background: #4b5563; }
@@ -343,11 +344,6 @@
             <h2 class="text-sm text-white py-1.5">Developed by GTMDBR</h2>
         </footer>   
     </div>
-
-    
-    <button id="restoreDataBtn" class="btn btn-primary restore-btn" title="Restore Auction Data">
-        <i class="fas fa-undo"></i>
-    </button>
 
     <div id="settingsModal" class="modal">
         <div class="modal-content">
