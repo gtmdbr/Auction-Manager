@@ -284,6 +284,18 @@
 
         .cls-neutral { background: #dc2626; }
         .cls-neutral:hover { background: #ff2626; }
+        .box {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            min-height: 2.5rem;
+            display: block;
+            white-space: normal;
+            box-shadow: var(--shadow);
+            overflow-x: auto;
+            z-index: 5;
+        }
 
         @media (max-width: 768px) {
             .grid-container {
@@ -307,11 +319,11 @@
             <div class="grid-container mb-4">
                 <div>
                     <label class="block text-sm font-medium mb-1">Player Name</label>
-                    <input id="playerName" type="text" placeholder="Enter player name">
+                    <input id="playerName" class="box" type="text" placeholder="Enter player name">
                 </div>
                 <div>
                     <label class="block text-sm font-medium mb-1">Current Bid (₹)</label>
-                    <input id="currentBid" type="number" value="20" min="20" readonly>
+                    <input id="currentBid" class="box" type="number" value="20" min="20" readonly>
                 </div>
                 <div>
                     <label class="block text-sm font-medium mb-1">Bidding Cycle</label>
