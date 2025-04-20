@@ -10,6 +10,7 @@
         :root {
             --primary: #3b8bb5;
             --accent: #f59e0b;
+            --accent1: #f59e3f;
             --success: #10b981;
             --danger: #ef4444;
             --neutral: #6b7280;
@@ -130,6 +131,8 @@
         .btn-primary:hover { background: #2563eb; }
         .btn-accent { background: var(--accent); }
         .btn-accent:hover { background: #d97706; }
+        .btn-accent1 { background: var(--accent1); }
+        .btn-accent1:hover { background: #d9770f; }
         .btn-success { background: var(--success); }
         .btn-success:hover { background: #059669; }
         .btn-danger { background: var(--danger); }
@@ -333,12 +336,13 @@
                     <div id="cycleVisualization" class="cycle-vis"></div>
                 </div>
             </div>
-            <div class="flex-gap">
-                <button id="placeBid" class="btn btn-primary">Bid</button>
-                <button id="skipBid" class="btn btn-accent">Skip</button>
-                <button id="allocatePlayer" class="btn btn-success">Allocate</button>
-                <button id="cancelBid" class="btn btn-danger">Cancel</button>
-            </div>
+                <div class="flex-gap">
+                    <button id="placeBid" class="btn btn-primary">Bid</button>
+                    <button id="skipBid" class="btn btn-accent">Skip</button>
+                    <button id="outBid" class="btn btn-accent1">Out</button>
+                    <button id="allocatePlayer" class="btn btn-success">Allocate</button>
+                    <button id="cancelBid" class="btn btn-danger">Cancel</button>
+                </div>
             <p id="bidError" class="text-red-500 mt-3 hidden"></p>
         </div>
 
@@ -510,6 +514,7 @@
             skipBid: document.getElementById('skipBid'),
             allocate: document.getElementById('allocatePlayer'),
             cancelBid: document.getElementById('cancelBid'),
+            outBid: document.getElementById('outBid'),
             exportTeam: document.getElementById('exportTeam'),
             exportData: document.getElementById('exportData'),
             bidError: document.getElementById('bidError'),
@@ -982,6 +987,37 @@
             console.log('Close cancel bid modal');
             els.cancelBidModal.classList.remove('open');
         });
+        
+        els.outBid.addEventListener('click', () => {
+    const player = els.playerName.value.trim();
+    const team = state.teams[state.currentTeamIndex];
+
+    if (!validatePlayer(player, state.currentPlayer !== player)) return;
+
+    if (state.currentPlayer !== player) {
+        state.playerOrder++;
+        state.currentPlayer = player;
+        state.bidCount = 0;
+        state.currentBid = state.rules.minBid;
+        state.continuousSkips = 0;
+        state.lastBiddingTeamIndex = -1;
+        state.teams.forEach(t => {
+            t.skips[player] = t.skips[player] || 0;
+            t.banned[player] = t.banned[player] || false;
+        });
+        state.lastBidOpenerTeamIndex = state.currentTeamIndex;
+    }
+
+    if (team.banned[player]) {
+        showError(`${team.name} is already banned!`);
+        return;
+    }
+
+    team.banned[player] = true;
+    state.bidHistory.push({ player, action: 'Banned', team: state.currentTeamIndex });
+    clearError();
+    nextTeam();
+});
 
         els.exportTeam.addEventListener('click', () => {
             const unsold = state.completedPlayers.filter(p => p.status === 'Unsold').map(p => p.player);
