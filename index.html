@@ -75,19 +75,22 @@
         
         .mnu {
             width: auto;
+            padding: 3rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10;
             height: 42px;
             border-radius: 1rem;
             cursor: pointer;
             border: 1px solid var(--border);
-            transition: background-color 0.2s ease, transform 0.1s ease;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            color: #ffffff;
-            margin-inline: 0.5rem;
-            margin-block: 0.5rem;
-            padding: 0 1.1rem;
         }
+
+        .mnu-neutral { background: var(--neutral); }
+        .mnu-neutral:hover { background: #4b5563; }
 
         .btn {
             width: auto;
@@ -271,7 +274,7 @@
     </header>
 
     <div id="menu" class="col md:w-3/12 flex md:justify-end">
-        <button id="menuBtn" class="mnu btn-neutral rounded-full"><i class="fa-regular fa-gear"></i></button>
+        <button id="menuBtn" class="mnu mnu-neutral rounded-full"><i class="fa-regular fa-gear"></i></button>
     </div>
 
     <div class="container">
