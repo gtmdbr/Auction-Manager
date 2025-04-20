@@ -262,9 +262,9 @@
             z-index: 10;
         }
         .cls {
-            position: fix;
-            top: 0rem; 
-            right: 0rem;
+            position: relative;
+            top: -20rem; 
+            right: -20rem;
             z-index: 30;
             width: 45px;
             height: 45px;
@@ -350,13 +350,13 @@
     <div id="settingsModal" class="modal">
         <div class="modal-content">
             <h2 class="text-xl font-semibold mb-3">Settings</h2>
+            <button id="closeSettings" class="cls cls-neutral"><i class="fas fa-times"></i></button>
             <div class="flex flex-col gap-3">
                 <button id="editEventName" class="btn btn-primary">Edit Event Name</button>
                 <button id="editTeams" class="btn btn-primary">Edit Teams</button>
                 <button id="editRules" class="btn btn-primary">Edit Rules</button>
                 <button id="restoreDataBtn" class="btn btn-primary" title="Restore Auction Data"><i class="fas fa-undo"></i>  Restore Saved Data</button>
                 <button id="resetData" class="btn btn-danger"><i class="fas fa-trash"></i>  Reset Data</button>
-                <button id="closeSettings" class="cls cls-neutral"><i class="fas fa-times"></i></button>
             </div>
         </div>
     </div>
@@ -376,17 +376,19 @@
 
     <div id="editTeamsModal" class="modal">
         <div class="modal-content">
+            <button id="cancelTeams" class="cls cls-neutral"><i class="fas fa-times"></i></button>
             <h2 class="text-xl font-semibold mb-3">Edit Teams</h2>
             <div id="teamInputs"></div>
             <div class="flex-gap mt-4">
                 <button id="saveTeams" class="btn btn-primary"><i class="fas fa-save"></i> Save</button>
-                <button id="cancelTeams" class="btn btn-neutral"><i class="fas fa-times"></i> Cancel</button>
+                
             </div>
         </div>
     </div>
 
     <div id="editRulesModal" class="modal">
         <div class="modal-content">
+            <button id="cancelRules" class="cls cls-neutral"><i class="fas fa-times"></i></button>
             <h2 class="text-xl font-semibold mb-3">Edit Rules</h2>
             <div class="space-y-4">
                 <div>
@@ -426,19 +428,20 @@
             </div>
             <div class="flex-gap mt-4">
                 <button id="saveRules" class="btn btn-primary"><i class="fas fa-save"></i> Save</button>
-                <button id="cancelRules" class="btn btn-neutral"><i class="fas fa-times"></i> Cancel</button>
+                
             </div>
         </div>
     </div>
 
     <div id="cancelBidModal" class="modal">
         <div class="modal-content">
+            <button id="closeCancelBid" class="cls cls-neutral"><i class="fas fa-times"></i></button>
             <h2 class="text-xl font-semibold mb-3">Cancel Bid Options</h2>
             <p class="text-sm mb-4">Choose an action for the current player:</p>
             <div class="flex-gap">
                 <button id="cancelLastStep" class="btn btn-primary">Cancel Last Step</button>
                 <button id="cancelBiddingPlayer" class="btn btn-danger">Cancel Bidding Player</button>
-                <button id="closeCancelBid" class="btn btn-neutral">Close</button>
+                
             </div>
         </div>
     </div>
