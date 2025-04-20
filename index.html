@@ -88,8 +88,8 @@
             box-shadow: var(--shadow);
         }
 
-        .mnu-neutral { background: #4b5563; }
-        .mnu-neutral:hover { background: #4b5563; }
+        .mnu-neutral { background: rgba(255, 255, 255, 0.8); }
+        .mnu-neutral:hover { background: rgba(255, 255, 255, 1); }
 
         .btn {
             width: auto;
@@ -233,6 +233,7 @@
 
         .cycle-vis .active {
             font-weight: 600;
+            color: #1c1f8f;
         }
 
         .cycle-vis .banned {
@@ -274,7 +275,7 @@
     </header>
 
     <a id="menu">
-        <button id="menuBtn" class="mnu mnu-neutral rounded-full"><i class="fa-regular fa-gear"></i></button>
+        <button id="menuBtn" class="mnu mnu-neutral rounded-full"><i class="fa-regular fa-gear"style="color: #4b5563></i></button>
     </a>
 
     <div class="container">
@@ -333,12 +334,12 @@
         <div class="modal-content">
             <h2 class="text-xl font-semibold mb-3">Settings</h2>
             <div class="flex flex-col gap-3">
-                <button id="editEventName" class="btn btn-primary">Edit Event Name</button>
-                <button id="editTeams" class="btn btn-primary">Edit Teams</button>
-                <button id="editRules" class="btn btn-primary">Edit Rules</button>
-                <button id="restoreDataBtn" class="btn btn-primary" title="Restore Auction Data"><i class="fas fa-undo"></i>restore saved data</button>
-                <button id="resetData" class="btn btn-danger">Reset Data</button>
-                <button id="closeSettings" class="btn btn-neutral">Close</button>
+                <button id="editEventName" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i> Edit Event Name</button>
+                <button id="editTeams" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i> Edit Teams</button>
+                <button id="editRules" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i> Edit Rules</button>
+                <button id="restoreDataBtn" class="btn btn-primary" title="Restore Auction Data"><i class="fas fa-undo"></i> Restore Saved Data</button>
+                <button id="resetData" class="btn btn-danger"><i class="fa-solid fa-trash-undo"></i> Reset Data</button>
+                <button id="closeSettings" class="btn btn-neutral"><i class="fa-solid fa-circle-xmark"></i> Close</button>
             </div>
         </div>
     </div>
