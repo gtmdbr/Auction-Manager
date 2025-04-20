@@ -261,22 +261,6 @@
             z-index: 10;
         }
 
-        /* Floating Restore Button */
-        .restore-btn {
-            position: fixed;
-            bottom: 1rem; /* Above footer */
-            right: 1rem;
-            z-index: 30;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--shadow);
-        }
-
         @media (max-width: 768px) {
             .grid-container {
                 grid-template-columns: 1fr;
@@ -352,9 +336,9 @@
                 <button id="editEventName" class="btn btn-primary">Edit Event Name</button>
                 <button id="editTeams" class="btn btn-primary">Edit Teams</button>
                 <button id="editRules" class="btn btn-primary">Edit Rules</button>
+                <button id="restoreDataBtn" class="btn btn-primary" title="Restore Auction Data"><i class="fas fa-undo"></i>restore saved data</button>
                 <button id="resetData" class="btn btn-danger">Reset Data</button>
                 <button id="closeSettings" class="btn btn-neutral">Close</button>
-                <button id="restoreDataBtn" class="btn btn-primary restore-btn" title="Restore Auction Data"><i class="fas fa-undo"></i></button>
             </div>
         </div>
     </div>
