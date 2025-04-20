@@ -29,21 +29,44 @@
             font-family: 'Poppins', sans-serif;
             margin: 0;
             min-height: 100vh;
-            background: linear-gradient(-45deg, #3A0088, #930077, #E61C5D, #FFBD39, #015551) ;
-            background-size: 400% 400%;
-            animation: bg 8s ease infinite;
-            background-attachment: fixed;
+            background-size: 80% 80%;
+            background-position: 50% 100%;
+            animation: c4 6s infinite linear;
             align-items: center;
             max-width: 100vw;
             color: #111827;
             font-weight: 400;
             padding-top: 1.5rem;
-        }
-        @keyframes bg{
-            0%{ background-position: 0% 50%; }
-            50%{ background-position: 100% 100%; }
-            100%{ background-position: 0% 50%; }
-        }
+        }        
+        @keyframes c1 { 50%{ 
+                        background-size: 80% 80%;
+                        background-position: 50% 100%;
+                        transform: scale(3) rotate(-75deg);
+  }
+}
+
+@keyframes c2 {
+  50%{ 
+    background-size: 80% 80%;
+   background-position: 50% 0;
+    transform: scale(3) rotate(90deg);
+  }
+}
+@keyframes c3 {
+  50%{ 
+  background-size: 70% 80%;
+   background-position: 0 100%;
+   transform: scale(3) rotate(8deg);
+  }
+}
+
+@keyframes c4 {
+  50%{ 
+   background-position: 0 0;
+  animation: c1 10s infinite;
+    transform: scale(3) rotate(-36deg);
+  }
+}
 
         header {
             position: fixed;
@@ -478,6 +501,14 @@
             </div>
         </div>
     </div>
+    <div class="gradient-wrap">
+<div class="meshgradient">
+  <div class="color c1"></div>
+   <div class="color c2"></div>
+   <div class="color c3"></div>
+   <div class="color c4"></div>
+</div>
+  </div>
 
     <script>
         let state = {
