@@ -88,8 +88,8 @@
             box-shadow: var(--shadow);
         }
 
-        .mnu-neutral { background: rgba(255, 255, 255, 0.8); }
-        .mnu-neutral:hover { background: rgba(255, 255, 255, 1); }
+        .mnu-neutral { background: #4b5563; }
+        .mnu-neutral:hover { background: #4b5563; }
 
         .btn {
             width: auto;
@@ -107,7 +107,6 @@
             margin-inline: 0.5rem;
             margin-block: 0.5rem;
             padding: 1.1rem;
-            padding-right: 0.5rem
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
@@ -225,7 +224,6 @@
             padding: 1rem;
             border-radius: 0.5rem;
             font-size: 0.875rem;
-            color: #4b5563;
             min-height: 2.5rem;
             display: block;
             white-space: nowrap;
@@ -263,6 +261,23 @@
             border-top: 1px solid var(--border);
             z-index: 10;
         }
+        .cls {
+            position: relative;
+            top: -0.5rem; 
+            right: -0.5rem;
+            z-index: 30;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+        }
+
+        .cls-neutral { background: #dc2626; }
+        .cls-neutral:hover { background: #ff2626; }
 
         @media (max-width: 768px) {
             .grid-container {
@@ -277,7 +292,7 @@
     </header>
 
     <a id="menu">
-        <button id="menuBtn" class="mnu mnu-neutral rounded-full"><i class="fa-regular fa-gear"style="color: #63E6BE;"></i></button>
+        <button id="menuBtn" class="mnu mnu-neutral rounded-full"><i class="fa-regular fa-gear"></i></button>
     </a>
 
     <div class="container">
@@ -336,12 +351,12 @@
         <div class="modal-content">
             <h2 class="text-xl font-semibold mb-3">Settings</h2>
             <div class="flex flex-col gap-3">
-                <button id="editEventName" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i> Edit Event Name</button>
-                <button id="editTeams" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i> Edit Teams</button>
-                <button id="editRules" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i> Edit Rules</button>
-                <button id="resetData" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Reset Data</button>
-                <button id="closeSettings" class="btn btn-neutral"><i class="fa-solid fa-circle-xmark"></i> Close</button>
-                
+                <button id="editEventName" class="btn btn-primary">Edit Event Name</button>
+                <button id="editTeams" class="btn btn-primary">Edit Teams</button>
+                <button id="editRules" class="btn btn-primary">Edit Rules</button>
+                <button id="restoreDataBtn" class="btn btn-primary" title="Restore Auction Data"><i class="fas fa-undo"></i>  Restore Saved Data</button>
+                <button id="resetData" class="btn btn-danger"><i class="fas fa-trash"></i>  Reset Data</button>
+                <button id="closeSettings" class="cls cls-neutral"><i class="fas fa-times"></button>
             </div>
         </div>
     </div>
@@ -352,6 +367,7 @@
             <label class="block text-sm font-medium mb-1">Event Name</label>
             <input id="eventNameInput" type="text" value="Cricket Auction">
             <div class="flex-gap mt-4">
+                <buttonprudhvi@prudhvi-Lenovo-G50-80:~/Desktop$ dir
                 <button id="saveEventName" class="btn btn-primary"><i class="fas fa-save"></i> Save</button>
                 <button id="cancelEventName" class="btn btn-neutral"><i class="fas fa-times"></i> Cancel</button>
             </div>
