@@ -284,8 +284,7 @@ animation: c4 6s infinite linear;
         }
 
         .flex-gap {
-            display: flex;
-            align-items: center;
+            display: inline-flex;
             flex-wrap: wrap;
         }
 
@@ -412,7 +411,7 @@ animation: c4 6s infinite linear;
     <div class="container">
         <div class="card">
             <h2 class="text-xl font-semibold mb-3">Auction Control</h2>
-            <div class="grid-container mb-4">
+            <div class="grid-container items-center mb-4">
                 <div>
                     <label class="block text-sm font-medium mb-1">Player Name</label>
                     <input id="playerName" class="box" type="text" placeholder="Enter player name">
@@ -422,12 +421,12 @@ animation: c4 6s infinite linear;
                     <input id="currentBid" class="box text-lg font-bold" type="number" value="20" min="20" readonly>
                 </div>
             </div>
-                <div>
+                <div class="items-center;">
                     <label class="block text-sm font-medium mb-1">Bidding Cycle</label>
                     <div id="cycleVisualization" class="cycle-vis"></div>
                 </div>
             
-                <div class="flex-gap">
+                <div class="flex-gap items-center">
                     <button id="placeBid" class="btn btn-primary">Bid</button>
                     <button id="skipBid" class="btn btn-accent">Skip</button>
                     <button id="outBid" class="btn btn-accent1">Out</button>
@@ -453,7 +452,7 @@ animation: c4 6s infinite linear;
         </div>
 
         <div class="card">
-            <div class="flex-gap" >
+            <div class="flex-gap items-center" >
                 <button id="exportTeam" class="btn btn-primary"><i class="fas fa-download"></i> Export Team</button>
                 <button id="exportData" class="btn btn-primary"><i class="fas fa-download"></i> Export Data</button>
             </div>
