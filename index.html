@@ -247,8 +247,6 @@ animation: c4 6s infinite linear;
             inset: 0;
             background: rgba(0, 0, 0, 0.5);
             align-items: center;
-            align-self: safe center;
-            justify-content: center;
             z-index: 100;
             box-shadow: var(--shadow);
             visibility: hidden;
@@ -270,11 +268,7 @@ animation: c4 6s infinite linear;
             padding: 2rem;
             margin-block: 1.5rem;
             inset-inline: 10%;
-            align-self: auto;
-            align-items: center;
             position: relative;
-            align-items: center;
-            align-self: safe center;
             width: 80%;
             max-width: 500px;
             box-shadow: var(--shadow);
@@ -482,7 +476,7 @@ animation: c4 6s infinite linear;
         <div class="modal-content">
             <h2 class="text-xl font-semibold mb-3">Settings</h2>
             <button id="closeSettings" class="cls cls-neutral"><i class="fas fa-times"style="color: #ffffff;"></i></button>
-            <div class="flex-gap">
+            <div class="flex-col justify-center-safe">
                 <button id="editEventName" class="btn btn-primary">Edit Event Name</button>
                 <button id="editTeams" class="btn btn-primary">Edit Teams</button>
                 <button id="editRules" class="btn btn-primary">Edit Rules</button>
