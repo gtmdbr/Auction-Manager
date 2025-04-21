@@ -64,7 +64,7 @@ mix-blend-mode: overlay;
 .c1 {
 background: radial-gradient(#161179 25%, transparent 50%);
 background-size: 60% 80%;
-background-position: 0 0;
+background-position: 0 10%;
 animation: c1 8s infinite linear;
 }
 .c2 {
@@ -76,7 +76,7 @@ animation: c2 10s infinite linear;
 
 .c3 {
 background: radial-gradient(#BB563D 25%, transparent 50%);
-background-size: 80% 80%;
+background-size: 80% 70%;
 background-position: 50% 0;
 animation: c3 5s infinite linear;
 }
@@ -105,7 +105,7 @@ animation: c4 6s infinite linear;
   50%{ 
   background-size: 70% 80%;
    background-position: 0 100%;
-   transform: scale(3) rotate(8deg);
+   transform: scale(3) rotate(18deg);
   }
 }
 
@@ -243,7 +243,7 @@ animation: c4 6s infinite linear;
 
         .modal {
             display: none;
-            position: fixed;
+            position: absolute;
             inset: 0;
             background: rgba(0, 0, 0, 0.5);
             align-items: center;
@@ -257,6 +257,7 @@ animation: c4 6s infinite linear;
             display: inline-grid;
             opacity: 1;
             visibility: visible;
+            justify-content: safe center;
         }
 
         .modal-content {
