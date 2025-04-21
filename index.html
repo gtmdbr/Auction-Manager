@@ -254,7 +254,7 @@ animation: c4 6s infinite linear;
         }
 
         .modal.open {
-            display: flex;
+            display: inline-grid;
             opacity: 1;
             visibility: visible;
         }
@@ -269,8 +269,9 @@ animation: c4 6s infinite linear;
             margin-block: 1.5rem;
             inset-inline: 10%;
             position: relative;
+            justify-content: safe center;
             width: 80%;
-            max-width: 500px;
+            max-width: 600px;
             box-shadow: var(--shadow);
         }
 
