@@ -425,16 +425,16 @@ animation: c4 6s infinite linear;
             <h2 class="text-xl font-semibold mb-3">Auction Control</h2>
             <div class="grid mt-3">
                 <div>
-                    <label class="block text-sm font-medium mb-1">Player Name</label>
+                    <label class="block text-sm font-medium mb-2">Player Name</label>
                     <input id="playerName" class="box text-centre" type="text" placeholder="Enter player name">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium mb-1">Current Bid (₹)</label>
+                    <label class="block text-sm font-medium mb-2">Current Bid (₹)</label>
                     <input id="currentBid" class="box text-lg text-centre font-bold" type="number" value="20" min="20" readonly>
                 </div>
             
                 <div class="flex mb-1">
-                    <label class="block text-sm font-medium mb-1">Bidding Cycle</label>
+                    <label class="block text-sm font-medium">Bidding Cycle</label>
                     <div id="cycleVisualization" class="cycle-vis text-centre"></div>
                 </div>
             </div>
@@ -478,7 +478,7 @@ animation: c4 6s infinite linear;
         <div class="modal-content">
             <h2 class="text-xl font-semibold mb-3">Settings</h2>
             <button id="closeSettings" class="cls cls-neutral"><i class="fas fa-times"style="color: #ffffff;"></i></button>
-            <div class="grid justify-center-safe">
+            <div class="grid-center justify-center">
                 <button id="editEventName" class="btn btn-primary">Edit Event Name</button>
                 <button id="editTeams" class="btn btn-primary">Edit Teams</button>
                 <button id="editRules" class="btn btn-primary">Edit Rules</button>
