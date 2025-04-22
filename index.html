@@ -1,22 +1,22 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=no">
     <title>Cricket Auction</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: rgb(1,110,205);
-            --accent: rgb(74,175,205);
+            --primary: rgb(51,160,255);
+            --accent: rgb(168,116,255);
             --accent1: rgb(250,166,50);
             --success: rgb(90,183,92);
             --danger: rgb(218,79,74);
             --neutral: rgb(112,116,117);
             --white: rgba(255, 255, 255, 0.9);
-            --border: rgba(255, 255, 255, 0.2);
-            --background: rgba(255, 255, 255, 0.6);
+            --border: rgba(255, 255, 255, 0.4);
+            --background: rgba(92, 92, 92, 0.6);
             --shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
         }
 
@@ -31,117 +31,122 @@
             margin: 0;
             min-height: 100vh;
             background: rgb(0,0,0);
-            align-items: center;
+            place-items: center;
             text-align: center;
-            max-width: 100vw;
+            max-width: 100%;
             color: #111827;
             font-weight: 400;
             padding-top: 1.5rem;
         }
         .gradient-wrap {
-overflow: hidden;
-width: 100%;
-height:100vh;
-z-index: -1;            
-position: fixed;
-}
-.meshgradient>.color {
-width: 100%;
-height:100%;
-position: fixed;
-display: flex;
-align-items: center;
-transform: scale(3) rotate(0deg);
-top:0;
-bottom:0;
-left:0;
-right:0;
-margin: auto;
-background-repeat: no-repeat;
-mix-blend-mode: overlay;
-}
+            overflow: hidden;
+            width: 100%;
+            height:100vh;
+            z-index: -1;            
+            position: fixed;
+            }
+            
+        .meshgradient>.color {
+            width: 100%;
+            height:100%;
+            position: fixed;
+            display: flex;
+            align-items: center;
+            transform: scale(3) rotate(0deg);
+            top:0;
+            bottom:0;
+            left:0;
+            right:0;
+            margin: auto;
+            background-repeat: no-repeat;
+            mix-blend-mode: overlay;
+            }
 
-.c1 {
-background: radial-gradient(#161179 25%, transparent 50%);
-background-size: 60% 80%;
-background-position: 0 10%;
-animation: c1 8s infinite linear;
-}
-.c2 {
-background: radial-gradient(#410445 25%, transparent 50%);
-background-size: 70% 80%;
-background-position: 0 100%;
-animation: c2 10s infinite linear;
-}
+        .c1 {
+            background: radial-gradient(#161179 25%, transparent 50%);
+            background-size: 60% 80%;
+            background-position: 0 10%;
+            animation: c1 8s infinite linear;
+            }
+            
+        .c2 {
+            background: radial-gradient(#410445 25%, transparent 50%);
+            background-size: 70% 80%;
+            background-position: 0 100%;
+            animation: c2 10s infinite linear;
+            }
+        
+        .c3 {
+            background: radial-gradient(#BB563D 25%, transparent 50%);
+            background-size: 80% 70%;
+            background-position: 50% 0;
+            animation: c3 5s infinite linear;
+            }
+            
+        .c4 {
+            background: radial-gradient(#A5158C 25%, transparent 50%);
+            background-size: 80% 80%;
+            background-position: 50% 100%;
+            animation: c4 6s infinite linear;
+            }
 
-.c3 {
-background: radial-gradient(#BB563D 25%, transparent 50%);
-background-size: 80% 70%;
-background-position: 50% 0;
-animation: c3 5s infinite linear;
-}
-.c4 {
-background: radial-gradient(#A5158C 25%, transparent 50%);
-background-size: 80% 80%;
-background-position: 50% 100%;
-animation: c4 6s infinite linear;
-}
-
-@keyframes c1 { 50%{ 
-    background-size: 80% 80%;
-    background-position: 50% 100%;
-    transform: scale(3) rotate(-75deg);
-  }
-}
-
-@keyframes c2 {
-  50%{ 
-    background-size: 80% 80%;
-   background-position: 50% 0;
-    transform: scale(3) rotate(90deg);
-  }
-}
-@keyframes c3 {
-  50%{ 
-  background-size: 70% 80%;
-   background-position: 0 100%;
-   transform: scale(3) rotate(18deg);
-  }
-}
-
-@keyframes c4 {
-  50%{ 
-   background-position: 0 0;
-  animation: c1 10s infinite;
-    transform: scale(3) rotate(-36deg);
-  }
-}
+        @keyframes c1 { 
+            50%{ 
+                background-size: 80% 80%;
+                background-position: 50% 100%;
+                transform: scale(3) rotate(-75deg);
+                }
+        }
+        
+        @keyframes c2 {
+            50%{ 
+                background-size: 80% 80%;
+                background-position: 50% 0;
+                transform: scale(3) rotate(90deg);
+                }
+        }
+        @keyframes c3 {
+            50%{ 
+               background-size: 70% 80%;
+               background-position: 0 100%;
+               transform: scale(3) rotate(18deg);
+               }
+        }
+        
+        @keyframes c4 {
+            50%{ 
+              background-position: 0 0;
+              animation: c1 10s infinite;
+              transform: scale(3) rotate(-36deg);
+              }
+        }
 
         header {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
+            height: 4.5rem;
             background: rgba(180, 180, 180, 0.2);
             -webkit-backdrop-filter: blur(8px);
             backdrop-filter: blur(8px);
             padding: 0.4rem;
             text-align: center;
-            justify-content: center;
+            justify-content: space-around;
             color: #ffffff;
             border-bottom: 1px solid var(--border);
             z-index: 10;
         }
 
         header h1 {
-            font-size: 1.75rem;
+            font-size: 2rem;
             font-weight: 600;
         }
 
         .container {
-            max-width: 80%;
-            inset-inline: 2rem;
+            max-width: 75%;
             align-items: center;
+            justify-content: center;
             padding: 2rem;
         }
 
@@ -152,6 +157,7 @@ animation: c4 6s infinite linear;
             border: 1px solid var(--border);
             border-radius: 1rem;
             padding: 2rem;
+            margin-inline: auto;
             margin-block: 1.5rem;
             inset-inline: 10%;
             align-self: auto;
@@ -162,41 +168,54 @@ animation: c4 6s infinite linear;
             z-index: 2;
         }
         
+        .flexcard {
+            display: flex;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+        
+        .flexcard>* {
+            flex: 1 1 30%;
+            margin: 2rem;
+        }
+        
+        .cardgap > * {
+            margin: 1rem;
+        }
+        
         .mnu {
             position: fixed;
             top: 3rem; 
             right: 1rem;
             z-index: 30;
-            width: 45px;
-            height: 45px;
+            width: 1rem;
+            height: 1rem;
             border-radius: 50%;
             font-size: 1rem;
+            background: var(--neutral);
             display: flex;
-            padding: 2rem;
+            padding: 1.3rem;
             box-shadow: var(--shadow);
             align-items: center;
             justify-content: center;
         }
 
-        .mnu-neutral { background: #999999; }
-        .mnu-neutral:hover { background: #4b5563; }
+        .mnu:hover { background: var(--border); }
 
         .btn {
             width: auto;
             height: 42px;
-            border-radius: 1rem;
+            border-radius: 2rem;
             font-size: 0.875rem;
             font-weight: 500;
             cursor: pointer;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            transition: background-color 0.2s ease, transform 0.1s ease;
-            display: flex;
+            outline: none;
+            background: #2B2B2B;
+            transition: background-color 0.2s ease, border 0.1s ease;
+            display: inline-flex;
             position: relative;
             align-items: center;
-            align-self: safe center;
-            color: #ffffff;
-            margine-block: 1rem;
+            margine-inline: 1rem;
             gap: 1rem;
             padding: 1rem;
             text-transform: uppercase;
@@ -208,21 +227,21 @@ animation: c4 6s infinite linear;
         }
 
         .btn:hover {
-            transform: translateY(-2px);
+            color: none;
         }
 
-        .btn-primary { background: var(--primary); }
-        .btn-primary:hover { outline: 1px var(--border); }
-        .btn-accent { background: var(--accent); }
-        .btn-accent:hover { outline: 1px var(--border); }
-        .btn-accent1 { background: var(--accent1); }
-        .btn-accent1:hover { outline: 1px var(--border); }
-        .btn-success { background: var(--success); }
-        .btn-success:hover { outline: 1px var(--border); }
-        .btn-danger { background: var(--danger); }
-        .btn-danger:hover { outline: 1px var(--border); }
-        .btn-neutral { background: var(--neutral); }
-        .btn-neutral:hover { outline: 1px var(--border); }
+        .btn-primary { border: 2px solid var(--primary);color: var(--primary)}
+        .btn-primary:hover { background: var(--primary); }
+        .btn-accent { border: 2px solid var(--accent);color: var(--accent)}
+        .btn-accent:hover { background: var(--accent); }
+        .btn-accent1 { border: 2px solid var(--accent1);color: var(--accent1)}
+        .btn-accent1:hover { background: var(--accent1); }
+        .btn-success { border: 2px solid var(--success);color: var(--success)}
+        .btn-success:hover { background: var(--success); }
+        .btn-danger { border: 2px solid var(--danger);color: var(--danger)}
+        .btn-danger:hover { background: var(--danger); }
+        .btn-neutral { border: 2px solid var(--neutral);color: var(--neutral)}
+        .btn-neutral:hover { background: var(--neutral); }
 
         input {
             padding: 0.75rem;
@@ -240,7 +259,6 @@ animation: c4 6s infinite linear;
             border-color: var(--primary);
             box-shadow: var(--shadow);
         }
-
         .modal {
             display: none;
             position: absolute;
@@ -256,6 +274,7 @@ animation: c4 6s infinite linear;
         .modal.open {
             display: inline-grid;
             opacity: 1;
+            width: 100%;
             visibility: visible;
             justify-content: safe center;
         }
@@ -266,30 +285,38 @@ animation: c4 6s infinite linear;
             backdrop-filter: blur(10px);
             border: 1px solid var(--border);
             border-radius: 1rem;
-            padding: 2rem;
-            margin-block: 1.5rem;
-            inset-inline: 10%;
+            padding: 0.5rem;
+            margin:1.5rem;
             position: relative;
-            justify-content: safe center;
-            width: 80%;
+            justify-content: center;
+            width: 100%;
             max-width: 600px;
             box-shadow: var(--shadow);
+        }
+        .modal-content .modal-btngrp {
+            margin-bottom: 1.5rem;
         }
 
         .scrollable {
             max-height: 250px;
             overflow-y: auto;
             padding: 1rem;
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(200, 200, 200, 0.6);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
             border-radius: 0.5rem;
         }
 
         .grid-cols-auto {
-            display: grid;
-            grid-gap: 1.5rem;
+            display: flex;
+            width: 100%;
+            flex-wrap: wrap;
             gap: 1.5rem;
-            margin-block: 10px;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        }
+        
+        .grid-cols-auto > * {
+            flex:1 1 30%;
         }
 
         .flex-gap {
@@ -302,11 +329,11 @@ animation: c4 6s infinite linear;
 
         .flex-gap > * {
             margin-inline: 0.5rem;
-            margin-block: 1rem;
+            margin-top: 1.5rem;
         }
 
         .text-sm {
-            font-size: 0.875rem;
+            font-size: 0.950rem;
         }
 
         .font-medium {
@@ -320,13 +347,20 @@ animation: c4 6s infinite linear;
         .mt-3 {
             margin-block: 0.75rem;
         }
+        
+        .block {
+            gap: 1rem;
+        }
 
         .cycle-vis {
-            background: rgba(255, 255, 255, 0.8);
-            padding: 1rem;
+            background: rgba(200, 200, 200, 0.8);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            padding: .5rem;
             border-radius: 0.5rem;
             font-size: 0.875rem;
-            color: #8f8f8f;
+            color: #2f2f2f;
             min-height: 2.5rem;
             display: block;
             white-space: normal;
@@ -360,7 +394,8 @@ animation: c4 6s infinite linear;
             background: rgba(180, 180, 180, 0.4);
             -webkit-backdrop-filter: blur(8px);
             backdrop-filter: blur(8px);
-            padding: 1rem;
+            padding: 0.1rem;
+            height: 2rem;
             color: white;
             text-align: center;
             box-shadow: var(--shadow);
@@ -372,20 +407,25 @@ animation: c4 6s infinite linear;
             top: -0.5rem; 
             right: -0.5rem;
             z-index: 30;
-            width: 45px;
-            height: 45px;
+            width: 1.5rem;
+            height: 1.5rem;
             border-radius: 50%;
-            font-size: 1.2rem;
+            font-size: 1rem;
             align-items: center;
             box-shadow: var(--shadow);
             justify-content: center;
         }
 
-        .cls-neutral { background: #dc2626; }
-        .cls-neutral:hover { background: #ff2626; }
+        .cls-neutral { background: #dc2626; color: #fff }
+        .cls-neutral:hover { background: #fff; color: #dc2626}
+        
         .box {
-            background: rgba(255, 255, 255, 0.8);
-            padding: 1rem;
+            background: rgba(200, 200, 200, 0.8);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            padding: .5rem;
+            color: #111827;
             border-radius: 0.5rem;
             font-size: 0.875rem;
             min-height: 2.5rem;
@@ -396,7 +436,7 @@ animation: c4 6s infinite linear;
             z-index: 5;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 100%) {
             .grid-container {
                 grid-template-columns: 1fr;
             }
@@ -417,28 +457,28 @@ animation: c4 6s infinite linear;
     </header>
 
     <a id="menu">
-        <button id="menuBtn" class="mnu mnu-neutral rounded-full"><i class="fa-regular fa-gear"></i></button>
+        <button id="menuBtn" class="mnu"><i class="fa-regular fa-gear" style="color: #fff;"></i></button>
     </a>
 
     <div class="container">
         <div class="card">
             <h2 class="text-xl font-semibold mb-3">Auction Control</h2>
-            <div class="grid mt-3">
+            <div class="cardgap flexcard">
                 <div>
-                    <label class="block text-sm font-medium mb-2">Player Name</label>
-                    <input id="playerName" class="box text-centre" type="text" placeholder="Enter player name">
+                    <label class="block text-sm font-medium mb-3">Player Name</label>
+                    <input id="playerName" class="box text-center" type="text" placeholder="Enter player name">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium mb-2">Current Bid (₹)</label>
-                    <input id="currentBid" class="box text-lg text-centre font-bold" type="number" value="20" min="20" readonly>
+                    <label class="block text-sm font-medium mb-3">Current Bid (₹)</label>
+                    <input id="currentBid" class="box text-lg text-center font-bold" type="number" value="20" min="20" readonly>
                 </div>
-            
-                <div class="flex mb-1">
+                
+                <div>
                     <label class="block text-sm font-medium">Bidding Cycle</label>
-                    <div id="cycleVisualization" class="cycle-vis text-centre"></div>
+                    <div id="cycleVisualization" class="cycle-vis text-center"></div>
                 </div>
             </div>
-                <div class="flex-gap mt-4">
+                <div class="flex-gap">
                     <button id="placeBid" class="btn btn-primary">Bid</button>
                     <button id="skipBid" class="btn btn-accent">Skip</button>
                     <button id="outBid" class="btn btn-accent1">Out</button>
@@ -476,15 +516,24 @@ animation: c4 6s infinite linear;
 
     <div id="settingsModal" class="modal">
         <div class="modal-content">
-            <h2 class="text-xl font-semibold mb-3">Settings</h2>
-            <button id="closeSettings" class="cls cls-neutral"><i class="fas fa-times"style="color: #ffffff;"></i></button>
-            <div class="grid-center justify-center">
-                <button id="editEventName" class="btn btn-primary">Edit Event Name</button>
-                <button id="editTeams" class="btn btn-primary">Edit Teams</button>
-                <button id="editRules" class="btn btn-primary">Edit Rules</button>
-                <button id="restoreDataBtn" class="btn btn-primary" title="Restore Auction Data"><i class="fas fa-undo"></i>  Restore Saved Data</button>
-                <button id="resetData" class="btn btn-danger"><i class="fas fa-trash"></i>  Reset Data</button>
-            </div>
+            <h2 class="text-xl font-semibold">Settings</h2>
+            <button id="closeSettings" class="cls cls-neutral"><i class="fas fa-times"style="color: #fff;"></i></button>
+            <div>
+                    <div>  
+                        <button id="editEventName" class="btn btn-primary">Edit Event Name</button>
+                    </div>
+                    <div>   <button id="editTeams" class="btn btn-primary">Edit Teams</button>
+                    </div>
+                    <div>   
+                        <button id="editRules" class="btn btn-primary">Edit Rules</button>
+                    </div>
+                    <div>
+                            <button id="restoreDataBtn" class="btn btn-primary" title="Restore Auction Data"><i class="fas fa-undo"></i> Restore Saved Data</button>
+                    </div>
+                    <div> 
+                            <button id="resetData" class="btn btn-danger"><i class="fas fa-trash"></i> Reset Data</button>
+                    </div>
+            </div> 
         </div>
     </div>
 
@@ -495,7 +544,6 @@ animation: c4 6s infinite linear;
             <label class="block text-sm font-medium mb-1">Event Name</label>
             <input id="eventNameInput" type="text" value="Cricket Auction">
             <div class="flex-gap mt-4">
-                <buttonprudhvi@prudhvi-Lenovo-G50-80:~/Desktop$ dir
                 <button id="saveEventName" class="btn btn-primary"><i class="fas fa-save"></i> Save</button>
             </div>
         </div>
@@ -549,7 +597,7 @@ animation: c4 6s infinite linear;
                 <div>
                     <label class="inline-flex items-center">
                         <input id="dataProtection" type="checkbox" class="h-4 w-4 text-primary">
-                        <span class="ml-2 text-sm">Save Data</span>
+                        <span class="text-sm">Save Data</span>
                     </label>
                 </div>
             </div>
