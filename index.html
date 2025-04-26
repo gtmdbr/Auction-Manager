@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=no">
-    <title>Team Auction Management</title>
+    <title>Cricket Auction</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -29,9 +29,9 @@
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
+            width: 100vw;
             min-height: 100vh;
             background: rgb(0,0,0);
-            place-items: center;
             text-align: center;
             max-width: 100%;
             color: #111827;
@@ -160,7 +160,6 @@
             margin-inline: auto;
             margin-block: 1.5rem;
             inset-inline: 10%;
-            align-self: auto;
             align-items: center;
             justify-content: center;
             box-shadow: var(--shadow);
@@ -211,7 +210,7 @@
             cursor: pointer;
             outline: none;
             background: #2B2B2B;
-            transition: background-color 0.2s ease, border 0.1s ease;
+            transition: background-color 0.2s ease, color 0.2s ease;
             display: inline-flex;
             position: relative;
             align-items: center;
@@ -221,13 +220,8 @@
             text-transform: uppercase;
         }
 
-        .btn.round {
-            width: 48px;
-            padding: 0.5rem;
-        }
-
         .btn:hover {
-            color: none;
+            color: white;
         }
 
         .btn-primary { border: 2px solid var(--primary);color: var(--primary)}
@@ -286,7 +280,8 @@
             border: 1px solid var(--border);
             border-radius: 1rem;
             padding: 0.5rem;
-            margin:1.5rem;
+            text-align: center;
+            margin: .5em;
             position: relative;
             justify-content: center;
             width: 100%;
@@ -294,7 +289,11 @@
             box-shadow: var(--shadow);
         }
         .modal-content .modal-btngrp {
-            margin-bottom: 1.5rem;
+            display: inline-grid;
+            gap: 1em;
+            text-align: center;
+            justify-content: space-evenly;
+            margin: 1.5rem;
         }
 
         .scrollable {
@@ -504,9 +503,15 @@
         </div>
 
         <div class="card">
-            <div class="flex-gap items-center" >
-                <button id="exportTeam" class="btn btn-primary"><i class="fas fa-download"></i> Export Team</button>
-                <button id="exportData" class="btn btn-primary"><i class="fas fa-download"></i> Export Data</button>
+            <div class="flex-gap items-center">
+                <button id="exportTeam" class="btn btn-primary"><i class="fas fa-download"></i> Export
+                    Team</button>
+                <button id="exportData" class="btn btn-primary"><i class="fas fa-download"></i> Export
+                    Data</button>
+                <button id="shareRules" class="btn btn-primary"><i class="fas fa-book"></i> Share
+                    Rules</button>
+                <button id="shareTeamStatus" class="btn btn-primary"><i class="fas fa-share"></i> Share
+                    Team Status</button>
             </div>
         </div>
         <footer>
@@ -518,21 +523,12 @@
         <div class="modal-content">
             <h2 class="text-xl font-semibold">Settings</h2>
             <button id="closeSettings" class="cls cls-neutral"><i class="fas fa-times"style="color: #fff;"></i></button>
-            <div>
-                    <div>  
+            <div class="modal-btngrp">
                         <button id="editEventName" class="btn btn-primary">Edit Event Name</button>
-                    </div>
-                    <div>   <button id="editTeams" class="btn btn-primary">Edit Teams</button>
-                    </div>
-                    <div>   
+                        <button id="editTeams" class="btn btn-primary">Edit Teams</button>
                         <button id="editRules" class="btn btn-primary">Edit Rules</button>
-                    </div>
-                    <div>
-                            <button id="restoreDataBtn" class="btn btn-primary" title="Restore Auction Data"><i class="fas fa-undo"></i> Restore Saved Data</button>
-                    </div>
-                    <div> 
-                            <button id="resetData" class="btn btn-danger"><i class="fas fa-trash"></i> Reset Data</button>
-                    </div>
+                        <button id="restoreDataBtn" class="btn btn-primary" title="Restore Auction Data"><i class="fas fa-undo"></i> Restore Saved Data</button>
+                        <button id="resetData" class="btn btn-danger"><i class="fas fa-trash"></i> Reset Data</button>
             </div> 
         </div>
     </div>
@@ -623,7 +619,7 @@
 
     <script>
         let state = {
-            eventName: "Auction Manager",
+            eventName: "Cricket Auction",
             teams: Array(5).fill().map((_, i) => ({
                 name: `Team ${String.fromCharCode(65 + i)}`,
                 budget: 4000,
@@ -667,6 +663,8 @@
             outBid: document.getElementById('outBid'),
             exportTeam: document.getElementById('exportTeam'),
             exportData: document.getElementById('exportData'),
+            shareRules: document.getElementById('shareRules'),
+            shareTeamStatus: document.getElementById('shareTeamStatus'),
             bidError: document.getElementById('bidError'),
             bidHistory: document.getElementById('bidHistory'),
             teamStatus: document.getElementById('teamStatus'),
@@ -703,18 +701,21 @@
             closeCancelBid: document.getElementById('closeCancelBid'),
             restoreDataBtn: document.getElementById('restoreDataBtn')
         };
-
-        const clickSound = new Audio('click.wav');
-        const winSound = new Audio('win.wav');
         
-        const buttons = document.getElementsByTagName('button');
+        const winSound = new Audio('/mixkit-video-game-win-2016.wav');
+        const clickSound = new Audio('/mixkit-modern-technology-select-3124_[cut_0sec].wav');
+        
+    
 
+// Get all elements with class 'button'
+const buttons = document.getElementsByTagName('button');
 
-			for (let button of buttons) {
-    				button.addEventListener('click', function() {
-        				clickSound.play();
-    					});
-				}
+// Loop through the HTMLCollection and add event listener to each button
+for (let button of buttons) {
+    button.addEventListener('click', function() {
+        clickSound.play();
+    });
+}
 
         function resetState() {
             state = {
@@ -815,6 +816,111 @@
             }).filter(Boolean);
             return `${player}: ${parts.join(' ')}`.replace(/ then $/, '');
         }
+
+        function generateRulesHTML() {
+    const rules = state.rules;
+    const html = `
+            <html>
+            <head>
+            <title>${escapeHTML(state.eventName)} - Auction Rules</title>
+            <style>
+            body { font-family: 'Poppins', sans-serif; margin: 2rem; color: #111827; line-height: 1.6; }
+            h1 { text-align: center; font-size: 1.75rem; margin-bottom: 2rem; }
+            h2 { font-size: 1.25rem; margin-top: 1.5rem; }
+            ul { list-style: disc; padding-left: 2rem; }
+            li { margin-bottom: 0.5rem; }
+            .credit { text-align: center; color: #6b7280; margin-top: 2rem; }
+            </style>
+            </head>
+            <body>
+            <h1>${escapeHTML(state.eventName)} - Auction Rules</h1>
+            <h2>Overview</h2>
+            <p>Welcome to the ${escapeHTML(state.eventName)}! This auction involves
+            ${rules.numTeams} teams competing to build their rosters by bidding on players. Below are the
+            rules governing the auction process.</p>
+            <h2>Key Rules</h2>
+            <ul>
+            <li><strong>Number of Teams:</strong> ${rules.numTeams} teams participate in the auction.
+            </li>
+            <li><strong>Team Budget:</strong> Each team starts with a budget of ₹${rules.maxBudget}.
+            </li>
+            <li><strong>Minimum Players:</strong> Each team must acquire at least ${rules.minPlayers}
+            players.</li>
+            <li><strong>Minimum Bid:</strong> The starting bid for any player is ₹${rules.minBid}.</li>
+            <li><strong>Bid Increments:</strong>
+            <ul>
+            <li>First 1-5 bids: ₹${rules.increment1} increment</li>
+            <li>6-10 bids: ₹${rules.increment2} increment</li>
+            <li>11+ bids: ₹${rules.increment3} increment</li>
+            </ul>
+            </li>
+            </ul>
+            <h2>Bidding Process</h2>
+            <ul>
+            <li>Teams take turns bidding on a player in a cyclical order only.</li>
+            <li>A team can <strong>Bid</strong> (place a higher bid), <strong>Skip</strong> (pass their
+            turn), or <strong>Out</strong> (permanently withdraw from bidding for that player).</li>
+            <li>If a team skips three times for a player, they are banned from further bidding on that player.
+            </li>
+            <li>If all teams skip consecutively without a bid, the player is marked as unsold.</li>
+            <li>The highest bidder can allocate the player to their team if the bid is within their budget.</li>
+            </ul>
+            <h2>Budget Management</h2>
+            <ul>
+            <li>A team's maximum bid is calculated as: Budget - Spent - (Minimum Players - Current Players)
+            × Minimum Bid.</li>
+            <li>Teams cannot bid beyond their maximum bid budget.</li>
+            </ul>
+            <div class="credit">Developed by GTMDBR</div>
+            </body>
+            </html>
+            `;
+        const win = window.open('', '_blank');
+            if (win) {
+                win.document.write(html);
+                win.document.close();
+                win.print();
+                }
+        }
+        function generateTeamStatusImage(team) {
+        const canvas = document.createElement('canvas');
+        canvas.width = 400;
+        canvas.height = 300;
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#111827';
+        ctx.font = 'bold 20px Poppins';
+        ctx.textAlign = 'center';
+        ctx.fillText(team.name, canvas.width / 2, 30);
+        ctx.font = '16px Poppins';
+        ctx.textAlign = 'left';
+        ctx.fillText(`Budget Left: ₹${team.budget - team.spent}`, 20, 70);
+        ctx.fillText(`Max Bid: ₹${getMaxBid(team)}`, 20, 100);
+        ctx.fillText(`Players: ${team.players.length}${team.players.length < state.rules.minPlayers ? `
+        (Need ${state.rules.minPlayers - team.players.length})` : ''}`, 20, 130);
+        ctx.fillText(`Spent: ₹${team.spent}`, 20, 160);
+        ctx.font = '14px Poppins';
+        let y = 190;
+        team.players.forEach(p => {
+        ctx.fillText(`${p.name} (₹${p.price})`, 20, y);
+        y += 20;
+        });
+        ctx.fillText(`Skips: ${state.currentPlayer ? (team.skips[state.currentPlayer] || 0) :
+        0}/3${team.banned[state.currentPlayer] ? ' (Banned)' : ''}`, 20, y);
+        return canvas.toDataURL('image/png');
+        }
+        function shareTeamStatus() {
+                state.teams.forEach(team => {
+                const imageUrl = generateTeamStatusImage(team);
+                const link = document.createElement('a');
+                link.href = imageUrl;
+                link.download = `${team.name}_status.png`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                });
+            }
 
         function updateUI() {
             console.log('Updating UI...');
@@ -1442,7 +1548,6 @@
             }
         });
 
-        // Restore Data Button Event Listener
         els.restoreDataBtn.addEventListener('click', () => {
             console.log('Restore data button clicked');
             if (!state.rules.dataProtection) {
