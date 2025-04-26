@@ -704,6 +704,12 @@
             restoreDataBtn: document.getElementById('restoreDataBtn')
         };
 
+        const clickSound = new Audio('click.wav');
+        
+        document.addEventListener('click', function() {
+                clickSound.play();
+            });
+
         function resetState() {
             state = {
                 eventName: "Cricket Auction",
