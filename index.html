@@ -508,10 +508,6 @@
                     Team</button>
                 <button id="exportData" class="btn btn-primary"><i class="fas fa-download"></i> Export
                     Data</button>
-                <button id="shareRules" class="btn btn-primary"><i class="fas fa-book"></i> Share
-                    Rules</button>
-                <button id="shareTeamStatus" class="btn btn-primary"><i class="fas fa-share"></i> Share
-                    Team Status</button>
             </div>
         </div>
         <footer>
@@ -524,10 +520,10 @@
             <h2 class="text-xl font-semibold">Settings</h2>
             <button id="closeSettings" class="cls cls-neutral"><i class="fas fa-times"style="color: #fff;"></i></button>
             <div class="modal-btngrp">
-                        <button id="editEventName" class="btn btn-primary">Edit Event Name</button>
-                        <button id="editTeams" class="btn btn-primary">Edit Teams</button>
-                        <button id="editRules" class="btn btn-primary">Edit Rules</button>
-                        <button id="restoreDataBtn" class="btn btn-primary" title="Restore Auction Data"><i class="fas fa-undo"></i> Restore Saved Data</button>
+                        <button id="editEventName" class="btn btn-primary"><i class="fas fa-edit"></i>Edit Event Name</button>
+                        <button id="editTeams" class="btn btn-primary"><i class="fas fa-edit"></i>Edit Teams</button>
+                        <button id="editRules" class="btn btn-primary"><i class="fas fa-edit"></i>Edit Rules</button>
+                        <button id="shareRules" class="btn btn-success"><i class="fas fa-book"></i> ShareRules</button>
                         <button id="resetData" class="btn btn-danger"><i class="fas fa-trash"></i> Reset Data</button>
             </div> 
         </div>
@@ -857,17 +853,17 @@ for (let button of buttons) {
                 </ul>
                 <h2>Bidding Process</h2>
                 <ul>
-                <li>Teams take turns bidding on a player in a cyclical order only.</li>
+                <li>Teams take turns bidding on a player in a <strong>cyclical order only.</strong> eg. team B can bid only after team A's turn.</li>
                 <li>A team can <strong>Bid</strong> (place a higher bid), <strong>Skip</strong> (pass their
                 turn), or <strong>Out</strong> (permanently withdraw from bidding for that player).</li>
                 <li>If a team skips three times for a player, they are banned from further bidding on that player.
                 </li>
                 <li>If all teams skip consecutively without a bid, the player is marked as unsold.</li>
-                <li>The highest bidder can allocate the player to their team if the bid is within their budget.</li>
+                <li>The highest bidder can bid the player only if the bid is within their maximum budget.</li>
                 </ul>
                 <h2>Budget Management</h2>
                 <ul>
-                <li>A team's maximum bid is calculated as: Budget - Spent - (Minimum Players - Current Players)
+                <li>A team's maximum bid is calculated as: ${rules.maxBudget} - Budget Spent - (${rules.minPlayers} - Current Players in team)
                 × Minimum Bid.</li>
                 <li>Teams cannot bid beyond their maximum bid budget.</li>
                 </ul>
@@ -881,47 +877,6 @@ for (let button of buttons) {
                     win.document.close();
                     win.print();
                 }
-            });
-        
-        function generateTeamStatusImage(team) {
-            const canvas = document.createElement('canvas');
-            canvas.width = 400;
-            canvas.height = 300;
-            const ctx = canvas.getContext('2d');
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = '#111827';
-            ctx.font = 'bold 20px Poppins';
-            ctx.textAlign = 'center';
-            ctx.fillText(team.name, canvas.width / 2, 30);
-            ctx.font = '16px Poppins';
-            ctx.textAlign = 'left';
-            ctx.fillText(`Budget Left: ₹${team.budget - team.spent}`, 20, 70);
-            ctx.fillText(`Max Bid: ₹${getMaxBid(team)}`, 20, 100);
-            ctx.fillText(`Players: ${team.players.length}${team.players.length < state.rules.minPlayers ? `
-            (Need ${state.rules.minPlayers - team.players.length})` : ''}`, 20, 130);
-            ctx.fillText(`Spent: ₹${team.spent}`, 20, 160);
-            ctx.font = '14px Poppins';
-            let y = 190;
-            team.players.forEach(p => {
-            ctx.fillText(`${p.name} (₹${p.price})`, 20, y);
-            y += 20;
-            });
-            ctx.fillText(`Skips: ${state.currentPlayer ? (team.skips[state.currentPlayer] || 0) :
-            0}/3${team.banned[state.currentPlayer] ? ' (Banned)' : ''}`, 20, y);
-            return canvas.toDataURL('image/png');
-        }
-        
-        els.shareTeamStatus.addEventListener('click', () => {
-                state.teams.forEach(team => {
-                const imageUrl = generateTeamStatusImage(team);
-                const link = document.createElement('a');
-                link.href = imageUrl;
-                link.download = `${team.name}_status.png`;
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                });
             });
 
         function updateUI() {
