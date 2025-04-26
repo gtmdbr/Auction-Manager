@@ -817,100 +817,102 @@ for (let button of buttons) {
             return `${player}: ${parts.join(' ')}`.replace(/ then $/, '');
         }
 
-        function generateRulesHTML() {
-    const rules = state.rules;
-    const html = `
-            <html>
-            <head>
-            <title>${escapeHTML(state.eventName)} - Auction Rules</title>
-            <style>
-            body { font-family: 'Poppins', sans-serif; margin: 2rem; color: #111827; line-height: 1.6; }
-            h1 { text-align: center; font-size: 1.75rem; margin-bottom: 2rem; }
-            h2 { font-size: 1.25rem; margin-top: 1.5rem; }
-            ul { list-style: disc; padding-left: 2rem; }
-            li { margin-bottom: 0.5rem; }
-            .credit { text-align: center; color: #6b7280; margin-top: 2rem; }
-            </style>
-            </head>
-            <body>
-            <h1>${escapeHTML(state.eventName)} - Auction Rules</h1>
-            <h2>Overview</h2>
-            <p>Welcome to the ${escapeHTML(state.eventName)}! This auction involves
-            ${rules.numTeams} teams competing to build their rosters by bidding on players. Below are the
-            rules governing the auction process.</p>
-            <h2>Key Rules</h2>
-            <ul>
-            <li><strong>Number of Teams:</strong> ${rules.numTeams} teams participate in the auction.
-            </li>
-            <li><strong>Team Budget:</strong> Each team starts with a budget of ₹${rules.maxBudget}.
-            </li>
-            <li><strong>Minimum Players:</strong> Each team must acquire at least ${rules.minPlayers}
-            players.</li>
-            <li><strong>Minimum Bid:</strong> The starting bid for any player is ₹${rules.minBid}.</li>
-            <li><strong>Bid Increments:</strong>
-            <ul>
-            <li>First 1-5 bids: ₹${rules.increment1} increment</li>
-            <li>6-10 bids: ₹${rules.increment2} increment</li>
-            <li>11+ bids: ₹${rules.increment3} increment</li>
-            </ul>
-            </li>
-            </ul>
-            <h2>Bidding Process</h2>
-            <ul>
-            <li>Teams take turns bidding on a player in a cyclical order only.</li>
-            <li>A team can <strong>Bid</strong> (place a higher bid), <strong>Skip</strong> (pass their
-            turn), or <strong>Out</strong> (permanently withdraw from bidding for that player).</li>
-            <li>If a team skips three times for a player, they are banned from further bidding on that player.
-            </li>
-            <li>If all teams skip consecutively without a bid, the player is marked as unsold.</li>
-            <li>The highest bidder can allocate the player to their team if the bid is within their budget.</li>
-            </ul>
-            <h2>Budget Management</h2>
-            <ul>
-            <li>A team's maximum bid is calculated as: Budget - Spent - (Minimum Players - Current Players)
-            × Minimum Bid.</li>
-            <li>Teams cannot bid beyond their maximum bid budget.</li>
-            </ul>
-            <div class="credit">Developed by GTMDBR</div>
-            </body>
-            </html>
-            `;
-        const win = window.open('', '_blank');
-            if (win) {
-                win.document.write(html);
-                win.document.close();
-                win.print();
+        els.shareRules.addEventListener('click', () => {
+        const rules = state.rules;
+        const html = `
+                <html>
+                <head>
+                <title>${escapeHTML(state.eventName)} - Auction Rules</title>
+                <style>
+                body { font-family: 'Poppins', sans-serif; margin: 2rem; color: #111827; line-height: 1.6; }
+                h1 { text-align: center; font-size: 1.75rem; margin-bottom: 2rem; }
+                h2 { font-size: 1.25rem; margin-top: 1.5rem; }
+                ul { list-style: disc; padding-left: 2rem; }
+                li { margin-bottom: 0.5rem; }
+                .credit { text-align: center; color: #6b7280; margin-top: 2rem; }
+                </style>
+                </head>
+                <body>
+                <h1>${escapeHTML(state.eventName)} - Auction Rules</h1>
+                <h2>Overview</h2>
+                <p>Welcome to the ${escapeHTML(state.eventName)}! This auction involves
+                ${rules.numTeams} teams competing to build their rosters by bidding on players. Below are the
+                rules governing the auction process.</p>
+                <h2>Key Rules</h2>
+                <ul>
+                <li><strong>Number of Teams:</strong> ${rules.numTeams} teams participate in the auction.
+                </li>
+                <li><strong>Team Budget:</strong> Each team starts with a budget of ₹${rules.maxBudget}.
+                </li>
+                <li><strong>Minimum Players:</strong> Each team must acquire at least ${rules.minPlayers}
+                players.</li>
+                <li><strong>Minimum Bid:</strong> The starting bid for any player is ₹${rules.minBid}.</li>
+                <li><strong>Bid Increments:</strong>
+                <ul>
+                <li>First 1-5 bids: ₹${rules.increment1} increment</li>
+                <li>6-10 bids: ₹${rules.increment2} increment</li>
+                <li>11+ bids: ₹${rules.increment3} increment</li>
+                </ul>
+                </li>
+                </ul>
+                <h2>Bidding Process</h2>
+                <ul>
+                <li>Teams take turns bidding on a player in a cyclical order only.</li>
+                <li>A team can <strong>Bid</strong> (place a higher bid), <strong>Skip</strong> (pass their
+                turn), or <strong>Out</strong> (permanently withdraw from bidding for that player).</li>
+                <li>If a team skips three times for a player, they are banned from further bidding on that player.
+                </li>
+                <li>If all teams skip consecutively without a bid, the player is marked as unsold.</li>
+                <li>The highest bidder can allocate the player to their team if the bid is within their budget.</li>
+                </ul>
+                <h2>Budget Management</h2>
+                <ul>
+                <li>A team's maximum bid is calculated as: Budget - Spent - (Minimum Players - Current Players)
+                × Minimum Bid.</li>
+                <li>Teams cannot bid beyond their maximum bid budget.</li>
+                </ul>
+                <div class="credit">Developed by GTMDBR</div>
+                </body>
+                </html>
+                `;
+                const win = window.open('', '_blank');
+                if (win) {
+                    win.document.write(html);
+                    win.document.close();
+                    win.print();
                 }
-        }
+            });
+        
         function generateTeamStatusImage(team) {
-        const canvas = document.createElement('canvas');
-        canvas.width = 400;
-        canvas.height = 300;
-        const ctx = canvas.getContext('2d');
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = '#111827';
-        ctx.font = 'bold 20px Poppins';
-        ctx.textAlign = 'center';
-        ctx.fillText(team.name, canvas.width / 2, 30);
-        ctx.font = '16px Poppins';
-        ctx.textAlign = 'left';
-        ctx.fillText(`Budget Left: ₹${team.budget - team.spent}`, 20, 70);
-        ctx.fillText(`Max Bid: ₹${getMaxBid(team)}`, 20, 100);
-        ctx.fillText(`Players: ${team.players.length}${team.players.length < state.rules.minPlayers ? `
-        (Need ${state.rules.minPlayers - team.players.length})` : ''}`, 20, 130);
-        ctx.fillText(`Spent: ₹${team.spent}`, 20, 160);
-        ctx.font = '14px Poppins';
-        let y = 190;
-        team.players.forEach(p => {
-        ctx.fillText(`${p.name} (₹${p.price})`, 20, y);
-        y += 20;
-        });
-        ctx.fillText(`Skips: ${state.currentPlayer ? (team.skips[state.currentPlayer] || 0) :
-        0}/3${team.banned[state.currentPlayer] ? ' (Banned)' : ''}`, 20, y);
-        return canvas.toDataURL('image/png');
+            const canvas = document.createElement('canvas');
+            canvas.width = 400;
+            canvas.height = 300;
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#111827';
+            ctx.font = 'bold 20px Poppins';
+            ctx.textAlign = 'center';
+            ctx.fillText(team.name, canvas.width / 2, 30);
+            ctx.font = '16px Poppins';
+            ctx.textAlign = 'left';
+            ctx.fillText(`Budget Left: ₹${team.budget - team.spent}`, 20, 70);
+            ctx.fillText(`Max Bid: ₹${getMaxBid(team)}`, 20, 100);
+            ctx.fillText(`Players: ${team.players.length}${team.players.length < state.rules.minPlayers ? `
+            (Need ${state.rules.minPlayers - team.players.length})` : ''}`, 20, 130);
+            ctx.fillText(`Spent: ₹${team.spent}`, 20, 160);
+            ctx.font = '14px Poppins';
+            let y = 190;
+            team.players.forEach(p => {
+            ctx.fillText(`${p.name} (₹${p.price})`, 20, y);
+            y += 20;
+            });
+            ctx.fillText(`Skips: ${state.currentPlayer ? (team.skips[state.currentPlayer] || 0) :
+            0}/3${team.banned[state.currentPlayer] ? ' (Banned)' : ''}`, 20, y);
+            return canvas.toDataURL('image/png');
         }
-        function shareTeamStatus() {
+        
+        els.shareTeamStatus.addEventListener('click', () => {
                 state.teams.forEach(team => {
                 const imageUrl = generateTeamStatusImage(team);
                 const link = document.createElement('a');
@@ -920,7 +922,7 @@ for (let button of buttons) {
                 link.click();
                 document.body.removeChild(link);
                 });
-            }
+            });
 
         function updateUI() {
             console.log('Updating UI...');
