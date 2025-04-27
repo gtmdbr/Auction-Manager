@@ -1430,7 +1430,6 @@ for (let button of buttons) {
             els.increment1.value = state.rules.increment1;
             els.increment2.value = state.rules.increment2;
             els.increment3.value = state.rules.increment3;
-            els.dataProtection.checked = state.rules.dataProtection;
         });
 
         els.saveRules.addEventListener('click', () => {
@@ -1443,7 +1442,6 @@ for (let button of buttons) {
                 increment1: +els.increment1.value,
                 increment2: +els.increment2.value,
                 increment3: +els.increment3.value,
-                dataProtection: els.dataProtection.checked
             };
 
             if (Object.values(rules).slice(0, -1).some(v => v < 1) || rules.numTeams > 10) {
