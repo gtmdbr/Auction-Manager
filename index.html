@@ -577,22 +577,16 @@
                     <input id="minBid" type="number" value="20" min="1">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium mb-1">Increment 1-5 Bids (₹)</label>
+                    <label class="block text-sm font-medium mb-1">Increment 1st set Bids (₹)</label>
                     <input id="increment1" type="number" value="20" min="1">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium mb-1">Increment 6-10 Bids (₹)</label>
+                    <label class="block text-sm font-medium mb-1">Increment 2nd set Bids (₹)</label>
                     <input id="increment2" type="number" value="30" min="1">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium mb-1">Increment 11+ Bids (₹)</label>
+                    <label class="block text-sm font-medium mb-1">Increment 2nd set onwards Bids (₹)</label>
                     <input id="increment3" type="number" value="50" min="1">
-                </div>
-                <div>
-                    <label class="inline-flex items-center">
-                        <input id="dataProtection" type="checkbox" class="h-4 w-4 text-primary">
-                        <span class="text-sm">Save Data</span>
-                    </label>
                 </div>
             </div>
             <div class="flex-gap mt-4">
@@ -847,9 +841,9 @@ for (let button of buttons) {
                 <li><strong>Minimum Bid:</strong> The starting bid for any player is ₹${rules.minBid}.</li>
                 <li><strong>Bid Increments:</strong>
                 <ul>
-                <li>First 1-5 bids: ₹${rules.increment1} increment</li>
-                <li>6-10 bids: ₹${rules.increment2} increment</li>
-                <li>11+ bids: ₹${rules.increment3} increment</li>
+                <li>First 1-${rule.numTeams} bids: ₹${rules.increment1} increment</li>
+                <li>${rule.numTeams+1}-${rule.numTeams*2} bids: ₹${rules.increment2} increment</li>
+                <li>${rule.numTeams*2+1}+ bids: ₹${rules.increment3} increment</li>
                 </ul>
                 </li>
                 </ul>
@@ -928,7 +922,7 @@ for (let button of buttons) {
         }
 
         function getMinIncrement() {
-            return state.bidCount < 5 ? state.rules.increment1 : state.bidCount < 10 ? state.rules.increment2 : state.rules.increment3;
+            return state.bidCount < state.rule.numTeams ? state.rules.increment1 : state.bidCount < state.rule.numTeams ? state.rules.increment2 : state.rules.increment3;
         }
 
         function nextTeam() {
@@ -1436,7 +1430,6 @@ for (let button of buttons) {
             els.increment1.value = state.rules.increment1;
             els.increment2.value = state.rules.increment2;
             els.increment3.value = state.rules.increment3;
-            els.dataProtection.checked = state.rules.dataProtection;
         });
 
         els.saveRules.addEventListener('click', () => {
