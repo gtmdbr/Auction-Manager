@@ -842,8 +842,8 @@ for (let button of buttons) {
                 <li><strong>Bid Increments:</strong>
                 <ul>
                 <li>First ${rules.numTeams} bids: ₹${rules.increment1} increment</li>
-                <li>${rules.numTeams*2} bids: ₹${rules.increment2} increment</li>
-                <li>${rules.numTeams*2}+ bids: ₹${rules.increment3} increment</li>
+                <li>${rules.numTeams+1}-${rules.numTeams*2} bids: ₹${rules.increment2} increment</li>
+                <li>${rules.numTeams*2+1}+ bids: ₹${rules.increment3} increment</li>
                 </ul>
                 </li>
                 </ul>
@@ -1442,6 +1442,7 @@ for (let button of buttons) {
                 increment1: +els.increment1.value,
                 increment2: +els.increment2.value,
                 increment3: +els.increment3.value,
+                dataProtection: els.dataProtection.checked
             };
 
             if (Object.values(rules).slice(0, -1).some(v => v < 1) || rules.numTeams > 10) {
