@@ -1501,26 +1501,6 @@ for (let button of buttons) {
             }
         });
 
-        els.restoreDataBtn.addEventListener('click', () => {
-            console.log('Restore data button clicked');
-            if (!state.rules.dataProtection) {
-                alert('Data protection is disabled. Enable it in Settings > Edit Rules to restore data.');
-                return;
-            }
-            try {
-                const saved = localStorage.getItem('auctionState');
-                if (!saved) {
-                    alert('No saved data found in local storage.');
-                    return;
-                }
-                loadState();
-                alert('Auction data restored successfully!');
-            } catch (e) {
-                console.warn('Failed to restore data:', e);
-                alert('Failed to restore data. Please try again.');
-            }
-        });
-
         window.addEventListener('click', e => {
             if ([els.settingsModal, els.eventNameModal, els.teamsModal, els.rulesModal, els.cancelBidModal].includes(e.target)) {
                 console.log('Modal background clicked:', e.target.id);
