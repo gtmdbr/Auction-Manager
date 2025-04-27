@@ -335,8 +335,13 @@
 
         .text-sm {
             font-size: 0.950rem;
+            text-align: justify;
         }
 
+        .text-sm1 {
+            font-size: 0.950rem;
+        }
+        
         .font-medium {
             font-weight: 500;
         }
@@ -513,7 +518,7 @@
             </div>
         </div>
         <footer>
-            <h2 class="text-sm text-white py-1.5">Developed by GTMDBR</h2>
+            <h2 class="text-sm1 text-white py-1.5">Developed by GTMDBR</h2>
         </footer>   
     </div>
 
@@ -885,7 +890,7 @@ for (let button of buttons) {
                     <p class="text-sm">Max Bid: ₹${getMaxBid(t)}</p>
                     <p class="text-sm">Players: ${t.players.length}${t.players.length < state.rules.minPlayers ? ` <span class="text-red-500">(Need ${state.rules.minPlayers - t.players.length})</span>` : ''}</p>
                     <p class="text-sm">Spent: ₹${t.spent}</p>
-                    <ul class="list-disc pl-4 text-sm mt-2">${t.players.map(p => `<li>${p.name} (₹${p.price})</li>`).join('')}</ul>
+                    <ol class="list-disc text-sm font-semibold mt-2" style="padding-left: 2rem;">${t.players.map(p => `<li>${p.name} (₹${p.price})</li>`).join('')}</ol>
                     <p class="text-sm">Skips: ${state.currentPlayer ? (t.skips[state.currentPlayer] || 0) : 0}/3${t.banned[state.currentPlayer] ? ' <span class="text-red-500">(Banned)</span>' : ''}</p>
                 </div>
             `).join('');
