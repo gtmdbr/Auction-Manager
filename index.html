@@ -608,8 +608,8 @@
             </div>
         </div>
     </div>
-
-    <script>
+    
+        <script>
         let state = {
             eventName: "Cricket Auction",
             teams: Array(5).fill().map((_, i) => ({
@@ -656,7 +656,6 @@
             exportTeam: document.getElementById('exportTeam'),
             exportData: document.getElementById('exportData'),
             shareRules: document.getElementById('shareRules'),
-            shareTeamStatus: document.getElementById('shareTeamStatus'),
             bidError: document.getElementById('bidError'),
             bidHistory: document.getElementById('bidHistory'),
             teamStatus: document.getElementById('teamStatus'),
@@ -809,7 +808,8 @@ for (let button of buttons) {
             return `${player}: ${parts.join(' ')}`.replace(/ then $/, '');
         }
 
-        els.shareRules.addEventListener('click', () => {
+
+            els.shareRules.addEventListener('click', () => {
         const rules = state.rules;
         const html = `
                 <html>
@@ -841,25 +841,25 @@ for (let button of buttons) {
                 <li><strong>Minimum Bid:</strong> The starting bid for any player is ₹${rules.minBid}.</li>
                 <li><strong>Bid Increments:</strong>
                 <ul>
-                <li>First 1-${rule.numTeams} bids: ₹${rules.increment1} increment</li>
-                <li>${rule.numTeams+1}-${rule.numTeams*2} bids: ₹${rules.increment2} increment</li>
-                <li>${rule.numTeams*2+1}+ bids: ₹${rules.increment3} increment</li>
+                <li>First ${rules.numTeams} bids: ₹${rules.increment1} increment</li>
+                <li>${rules.numTeams*2} bids: ₹${rules.increment2} increment</li>
+                <li>${rules.numTeams*2}+ bids: ₹${rules.increment3} increment</li>
                 </ul>
                 </li>
                 </ul>
                 <h2>Bidding Process</h2>
                 <ul>
-                <li>Teams take turns bidding on a player in a <strong>cyclical order only.</strong> eg. team B can bid only after team A's turn.</li>
+                <li>Teams take turns bidding on a player in a cyclical order only.</li>
                 <li>A team can <strong>Bid</strong> (place a higher bid), <strong>Skip</strong> (pass their
                 turn), or <strong>Out</strong> (permanently withdraw from bidding for that player).</li>
                 <li>If a team skips three times for a player, they are banned from further bidding on that player.
                 </li>
                 <li>If all teams skip consecutively without a bid, the player is marked as unsold.</li>
-                <li>The highest bidder can bid the player only if the bid is within their maximum budget.</li>
+                <li>The highest bidder can allocate the player to their team if the bid is within their budget.</li>
                 </ul>
                 <h2>Budget Management</h2>
                 <ul>
-                <li>A team's maximum bid is calculated as: ${rules.maxBudget} - Budget Spent - (${rules.minPlayers} - Current Players in team)
+                <li>A team's maximum bid is calculated as: Budget - Spent - (Minimum Players - Current Players)
                 × Minimum Bid.</li>
                 <li>Teams cannot bid beyond their maximum bid budget.</li>
                 </ul>
@@ -874,7 +874,7 @@ for (let button of buttons) {
                     win.print();
                 }
             });
-
+        
         function updateUI() {
             console.log('Updating UI...');
             els.eventName.textContent = state.eventName || "Cricket Auction";
@@ -922,7 +922,7 @@ for (let button of buttons) {
         }
 
         function getMinIncrement() {
-            return state.bidCount < state.rule.numTeams ? state.rules.increment1 : state.bidCount < state.rule.numTeams ? state.rules.increment2 : state.rules.increment3;
+            return state.bidCount < state.rules.numTeams ? state.rules.increment1 : state.bidCount < state.rules.numTeams*2 ? state.rules.increment2 : state.rules.increment3;
         }
 
         function nextTeam() {
@@ -1430,6 +1430,7 @@ for (let button of buttons) {
             els.increment1.value = state.rules.increment1;
             els.increment2.value = state.rules.increment2;
             els.increment3.value = state.rules.increment3;
+            els.dataProtection.checked = state.rules.dataProtection;
         });
 
         els.saveRules.addEventListener('click', () => {
